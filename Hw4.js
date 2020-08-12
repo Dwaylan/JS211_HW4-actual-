@@ -33,10 +33,36 @@ console.log('2 ' + board[2].join(' | '));
 }
 
 const horizontalWin = () => {
+  if (board[0][0] === playerTurn && board[0][1] ===  playerTurn && board[0][2] === playerTurn){
+    return true
+  }
+  else if (board[1][0] === playerTurn && board[1][1] ===  playerTurn && board[1][2] === playerTurn){
+    return true
+  }
+  else if (board[2][0] === playerTurn && board[2][1] ===  playerTurn && board[2][2] === playerTurn){
+    return true
+  }
+  else {
+    return false
+  }
+
+
   // Your code here to check for horizontal wins
 }
 
 const verticalWin = () => {
+  if (board[0][0] === playerTurn && board[1][0] ===  playerTurn && board[2][0] === playerTurn){
+    return true
+  }
+  else if (board[0][1] === playerTurn && board[1][1] ===  playerTurn && board[2][1] === playerTurn){
+    return true
+  }
+  else if (board[0][2] === playerTurn && board[1][2] ===  playerTurn && board[2][2] === playerTurn){
+    return true
+  }
+  else {
+    return false
+  }
   // Your code here to check for vertical wins
 }
 
@@ -44,13 +70,37 @@ const diagonalWin = () => {
   // Your code here to check for diagonal wins
 }
 
+const switchPlayer = () => {
+  if (playerTurn == 'X'){
+    playerTurn = 'O'
+  } else{
+    playerTurn = 'X'
+  }
+}
+// If playerTurn value is 'X' we are going to reassign the value as 'O'
+
 const checkForWin = () => {
+  if (horizontalWin()){
+    console.log(playerTurn + "Wins")
+    return true
+  }
+  else if (verticalWin()){
+    console.log(playerTurn + "Wins")
+  }
   // Your code here call each of the check for types of wins
+  // This is a boolean. True or false.
 }
 
 const ticTacToe = (row, column) => {
   // Your code here to place a marker on the board
   // then check for a win
+  // We need to update a specific cell
+
+  board[row][column] = playerTurn 
+  checkForWin();
+  switchPlayer();
+  // let the playerTurn update the cell 
+
 }
 
 const getPrompt = () => {
