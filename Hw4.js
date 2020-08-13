@@ -47,6 +47,7 @@ const horizontalWin = () => {
   }
 
 
+
   // Your code here to check for horizontal wins
 }
 
@@ -67,7 +68,15 @@ const verticalWin = () => {
 }
 
 const diagonalWin = () => {
+  if (board[0][0] === playerTurn && board[1][1] ===  playerTurn && board[2][2] === playerTurn){
+    return true
+  }
+  else if (board[0][2] === playerTurn && board [1][1] === playerTurn && [2][0] === playerTurn){
   // Your code here to check for diagonal wins
+}
+  else {
+    return false
+  }
 }
 
 const switchPlayer = () => {
@@ -81,11 +90,17 @@ const switchPlayer = () => {
 
 const checkForWin = () => {
   if (horizontalWin()){
-    console.log(playerTurn + "Wins")
+    console.log("player" + playerTurn + "Wins")
     return true
   }
   else if (verticalWin()){
-    console.log(playerTurn + "Wins")
+    console.log("player" + playerTurn + "Wins")
+  }
+  else if (diagonalWin()){
+    console.log("player" + playerTurn + "wins")
+  }
+  else{
+    return false
   }
   // Your code here call each of the check for types of wins
   // This is a boolean. True or false.
@@ -150,8 +165,9 @@ describe('#ticTacToe()', () => {
     assert.equal(checkForWin(), true);
     });
 });
-} else {
+} 
+else {
 
-getPrompt();
-
+getPrompt();{
+}
 }
